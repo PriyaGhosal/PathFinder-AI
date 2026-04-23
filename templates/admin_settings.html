@@ -1,0 +1,15 @@
+{% extends "admin_base.html" %}
+
+{% block admin_content %}
+<div class="section-heading"><p class="eyebrow">{{ t("admin") }}</p><h1>{{ t("settings_label") }}</h1></div>
+<form class="admin-form" method="post">
+  <div class="form-row two">
+    <label>{{ t("currency") }}<input name="currency" value="{{ app_settings.currency }}"></label>
+    <label>{{ t("tax_percent") }}<input name="tax_percent" value="{{ app_settings.tax_percent }}"></label>
+  </div>
+  <label>{{ t("brand_name") }}<input name="brand_name" value="{{ app_settings.brand_name }}"></label>
+  <label>{{ t("footer_text") }}<textarea name="footer_text">{{ app_settings.footer_text }}</textarea></label>
+  <label>{{ t("payment_gateway") }}<input name="payment_gateway" value="{{ app_settings.payment_gateway }}"></label>
+  <button class="button primary" type="submit">{{ t("save_changes") }}</button>
+</form>
+{% endblock %}

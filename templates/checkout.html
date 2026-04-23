@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="section-heading">
+    <p class="eyebrow">{{ t("checkout") }}</p>
+    <h1>{{ t("demo_checkout") }}</h1>
+  </div>
+  <form class="checkout-layout" method="post">
+    <div class="assessment-form">
+      <label>{{ t("payment_method") }}<input type="text" value="{{ settings.payment_gateway }}" disabled></label>
+      <label>{{ t("billing_email") }}<input type="email" value="{{ user.email }}" disabled></label>
+      <p class="muted-copy">{{ t("demo_payment_note") }}</p>
+      <button class="button primary full" type="submit">{{ t("place_order") }}</button>
+    </div>
+    <aside class="summary-card">
+      <h2>{{ t("order_summary") }}</h2>
+      {% for item in items %}
+        <p><span>{{ item.title }}</span><strong>{{ money(item.line_total) }}</strong></p>
+      {% endfor %}
+      <p><span>{{ t("discount") }}</span><strong>-{{ money(discount) }}</strong></p>
+      <p><span>{{ t("tax") }}</span><strong>{{ money(tax) }}</strong></p>
+      <p class="summary-total"><span>{{ t("total") }}</span><strong>{{ money(total) }}</strong></p>
+    </aside>
+  </form>
+</section>
+{% endblock %}

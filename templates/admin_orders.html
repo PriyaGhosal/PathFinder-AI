@@ -1,0 +1,15 @@
+{% extends "admin_base.html" %}
+
+{% block admin_content %}
+<div class="section-heading"><p class="eyebrow">{{ t("admin") }}</p><h1>{{ t("orders") }}</h1></div>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>ID</th><th>{{ t("name") }}</th><th>{{ t("email") }}</th><th>{{ t("total") }}</th><th>{{ t("transaction") }}</th><th>{{ t("status") }}</th></tr></thead>
+    <tbody>
+      {% for order in orders %}
+        <tr><td>#{{ order.id }}</td><td>{{ order.name }}</td><td>{{ order.email }}</td><td>{{ money(order.total) }}</td><td>{{ order.transaction_id }}</td><td>{{ order.status }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

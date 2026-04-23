@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero product-hero">
+  <p class="eyebrow">{{ t("resource_store") }}</p>
+  <h1>{{ t("products_title") }}</h1>
+  <p>{{ t("products_text") }}</p>
+</section>
+
+<section class="page-band">
+  <form class="filter-bar" method="get">
+    <label>{{ t("search") }}<input type="search" name="q" value="{{ query }}" placeholder="{{ t('search_products') }}"></label>
+    <label>
+      {{ t("category") }}
+      <select name="category">
+        <option value="">{{ t("all_categories") }}</option>
+        {% for category in categories %}
+          <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>
+      {{ t("sort") }}
+      <select name="sort">
+        <option value="popular" {% if sort == "popular" %}selected{% endif %}>{{ t("popular") }}</option>
+        <option value="newest" {% if sort == "newest" %}selected{% endif %}>{{ t("newest") }}</option>
+        <option value="price_low" {% if sort == "price_low" %}selected{% endif %}>{{ t("price_low") }}</option>
+        <option value="price_high" {% if sort == "price_high" %}selected{% endif %}>{{ t("price_high") }}</option>
+      </select>
+    </label>
+    <button class="button primary" type="submit">{{ t("search") }}</button>
+  </form>
+
+  <div class="product-grid">
+    {% for product in products %}
+      <article class="product-card">
+        <div class="product-media">{{ product.category[:2].upper() }}</div>
+        <span class="category">{{ product.category }}</span>
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.description }}</p>
+        <div class="product-card-footer">
+          <strong>{{ money(product.price) }}</strong>
+          <a class="button small" href="{{ url_for('product_detail', slug=product.slug) }}">{{ t("view_details") }}</a>
+        </div>
+      </article>
+    {% else %}
+      <p class="empty-state">{{ t("no_products") }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

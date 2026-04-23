@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ career.category }}</p>
+      <h1>{{ career.title }} {{ t("learning_roadmap") }}</h1>
+    </div>
+    <a class="button ghost" href="{{ url_for('results') }}">{{ t("results") }}</a>
+  </div>
+
+  <div class="roadmap-layout">
+    <aside class="roadmap-summary">
+      <h2>{{ t("selected_gap") }}</h2>
+      {% if skill_gap %}
+        <div class="chips vertical">
+          {% for skill in skill_gap %}
+            <span>{{ skill }}</span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>You are already close to the expected foundation.</p>
+      {% endif %}
+      <h2>{{ t("average_salary") }}</h2>
+      <p>{{ career.average_salary }}</p>
+      <h2>{{ t("future_scope") }}</h2>
+      <p>{{ career.future_scope }}</p>
+    </aside>
+
+    <div class="timeline">
+      {% for level, topics in career.roadmap.items() %}
+        <article class="timeline-item">
+          <span>{{ loop.index }}</span>
+          <div>
+            <h2>{{ level }}</h2>
+            <ul class="task-list">
+              {% for topic in topics %}
+                <li>
+                  <label class="task-check">
+                    <input type="checkbox" data-task="{{ career.id }}-{{ level }}-{{ loop.index }}">
+                    <span>{{ topic }}</span>
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="detail-grid lower">
+    <section class="info-panel">
+      <h2>{{ t("projects") }}</h2>
+      <ul>
+        {% for project in career.projects %}
+          <li>{{ project }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    <section class="info-panel">
+      <h2>{{ t("resources") }}</h2>
+      <ul>
+        {% for resource in career.resources %}
+          <li>{{ resource }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ profile.name }}</p>
+      <h1>{{ t("top_matches") }}</h1>
+    </div>
+    <div class="page-actions">
+      <a class="button ghost" href="{{ url_for('compare') }}">{{ t("compare") }}</a>
+      <a class="button ghost" href="{{ url_for('report') }}">{{ t("report") }}</a>
+      <a class="button ghost" href="{{ url_for('assistant') }}">{{ t("assistant") }}</a>
+      <a class="button ghost" href="{{ url_for('assessment') }}">{{ t("new_assessment") }}</a>
+    </div>
+  </div>
+
+  <form class="compare-picker" action="{{ url_for('compare') }}" method="get">
+    <strong>{{ t("compare_selected") }}</strong>
+    <div class="compare-options">
+      {% for rec in recommendations %}
+        <label>
+          <input type="checkbox" name="career_ids" value="{{ rec.id }}" {% if loop.index <= 3 %}checked{% endif %}>
+          {{ rec.title }}
+        </label>
+      {% endfor %}
+    </div>
+    <button class="button small" type="submit">{{ t("compare") }}</button>
+  </form>
+
+  <div class="results-stack">
+    {% for rec in recommendations %}
+      <article class="result-card">
+        <div class="result-score">
+          <strong>{{ rec.confidence }}%</strong>
+          <span>{{ t("confidence") }}</span>
+        </div>
+        <div class="result-body">
+          <span class="category">{{ rec.category }}</span>
+          <h2>{{ rec.title }}</h2>
+          <p>{{ rec.description }}</p>
+
+          <div class="detail-grid">
+            <section>
+              <h3>{{ t("why") }}</h3>
+              <ul>
+                {% for reason in rec.reasons %}
+                  <li>{{ reason }}</li>
+                {% endfor %}
+              </ul>
+            </section>
+            <section>
+              <h3>{{ t("skill_gap") }}</h3>
+              {% if rec.skill_gap %}
+                <div class="chips">
+                  {% for skill in rec.skill_gap %}
+                    <span>{{ skill }}</span>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <p>You already match the core skill set.</p>
+              {% endif %}
+            </section>
+          </div>
+
+          <div class="result-footer">
+            <span>{{ t("future_scope") }}: {{ rec.future_scope }}</span>
+            <a class="button small" href="{{ url_for('roadmap', career_id=rec.id) }}">{{ t("view_roadmap") }}</a>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

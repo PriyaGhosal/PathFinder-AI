@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("order_details") }}</p>
+      <h1>#{{ order.id }}</h1>
+    </div>
+    <div class="page-actions">
+      <a class="button ghost" href="{{ url_for('invoice', order_id=order.id) }}">{{ t("download_invoice") }}</a>
+      <a class="button ghost" href="{{ url_for('orders') }}">{{ t("orders") }}</a>
+    </div>
+  </div>
+  <div class="download-grid">
+    {% for item in items %}
+      <article class="download-card">
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.file_path }}</p>
+        <a class="button primary" href="{{ url_for('download_file', token=item.download_token) }}">{{ t("secure_download") }}</a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

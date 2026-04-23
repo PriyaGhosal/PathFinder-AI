@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band admin-shell">
+  <aside class="admin-nav">
+    <h2>{{ t("admin") }}</h2>
+    <a href="{{ url_for('admin') }}">{{ t("dashboard") }}</a>
+    <a href="{{ url_for('admin_products') }}">{{ t("products") }}</a>
+    <a href="{{ url_for('admin_orders') }}">{{ t("orders") }}</a>
+    <a href="{{ url_for('admin_users') }}">{{ t("users") }}</a>
+    <a href="{{ url_for('admin_coupons') }}">{{ t("coupons") }}</a>
+    <a href="{{ url_for('admin_faqs') }}">{{ t("faqs") }}</a>
+    <a href="{{ url_for('admin_messages') }}">{{ t("messages") }}</a>
+    <a href="{{ url_for('admin_settings') }}">{{ t("settings_label") }}</a>
+  </aside>
+  <div class="admin-content">
+    {% block admin_content %}{% endblock %}
+  </div>
+</section>
+{% endblock %}

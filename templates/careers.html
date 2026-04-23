@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("career_library") }}</p>
+      <h1>{{ t("explore_careers") }}</h1>
+    </div>
+    <a class="button primary" href="{{ url_for('assessment') }}">{{ t("start_assessment") }}</a>
+  </div>
+
+  <form class="filter-bar" method="get">
+    <label>
+      {{ t("search") }}
+      <input type="search" name="q" value="{{ query }}" placeholder="Python, design, healthcare">
+    </label>
+    <label>
+      {{ t("category") }}
+      <select name="category">
+        <option value="">All categories</option>
+        {% for category in categories %}
+          <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <button class="button primary" type="submit">{{ t("search") }}</button>
+  </form>
+
+  <div class="career-grid">
+    {% for career in careers %}
+      <article class="career-card">
+        <span>{{ career.category }}</span>
+        <h3>{{ career.title }}</h3>
+        <p>{{ career.description }}</p>
+        <div class="chips compact">
+          {% for skill in career.skills[:4] %}
+            <span>{{ skill }}</span>
+          {% endfor %}
+        </div>
+        <a class="button small" href="{{ url_for('roadmap', career_id=career.id) }}">{{ t("view_roadmap") }}</a>
+      </article>
+    {% else %}
+      <p class="empty-state">{{ t("no_careers_found") }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "software-developer",
+    "title": "Software Developer",
+    "category": "Technology",
+    "description": "Builds web, mobile, and software applications that solve real-world problems.",
+    "preferred_streams": ["Science", "Computer Science", "Vocational"],
+    "subjects": ["Computer Science", "Mathematics", "English"],
+    "interests": ["Technology", "Problem Solving", "Creativity"],
+    "skills": ["Python", "Web Development", "Problem Solving", "Communication"],
+    "work_styles": ["Analytical", "Creative", "Independent"],
+    "future_scope": "High demand across product companies, startups, IT services, and freelance work.",
+    "average_salary": "₹4 LPA - ₹18 LPA in India, depending on skills and experience.",
+    "roadmap": {
+      "Beginner": ["Programming basics", "HTML, CSS, JavaScript", "Python fundamentals", "Git and GitHub"],
+      "Intermediate": ["Flask or Django", "Databases", "REST APIs", "Frontend frameworks"],
+      "Advanced": ["System design basics", "Cloud deployment", "Testing", "Open-source contribution"]
+    },
+    "projects": ["Portfolio website", "Student management system", "Career recommendation web app"],
+    "resources": ["freeCodeCamp", "CS50", "Flask documentation", "MDN Web Docs"]
+  },
+  {
+    "id": "data-scientist",
+    "title": "Data Scientist",
+    "category": "AI and Analytics",
+    "description": "Uses statistics, programming, and machine learning to discover insights and make predictions.",
+    "preferred_streams": ["Science", "Computer Science", "Commerce"],
+    "subjects": ["Mathematics", "Statistics", "Computer Science", "Economics"],
+    "interests": ["Data", "Research", "Problem Solving", "Technology"],
+    "skills": ["Python", "Data Analysis", "Mathematics", "Critical Thinking"],
+    "work_styles": ["Analytical", "Independent", "Structured"],
+    "future_scope": "Strong demand in AI, finance, healthcare, e-commerce, and business intelligence.",
+    "average_salary": "₹6 LPA - ₹25 LPA in India, depending on portfolio and experience.",
+    "roadmap": {
+      "Beginner": ["Python", "Excel", "Statistics basics", "Data cleaning"],
+      "Intermediate": ["Pandas", "NumPy", "Data visualization", "Machine learning basics"],
+      "Advanced": ["TensorFlow", "Model deployment", "MLOps basics", "Real-world case studies"]
+    },
+    "projects": ["Student performance predictor", "Movie recommendation system", "Career prediction model"],
+    "resources": ["Kaggle Learn", "Google Machine Learning Crash Course", "TensorFlow tutorials"]
+  },
+  {
+    "id": "doctor",
+    "title": "Doctor",
+    "category": "Healthcare",
+    "description": "Diagnoses, treats, and supports patients through medical knowledge and clinical care.",
+    "preferred_streams": ["Science"],
+    "subjects": ["Biology", "Physics", "Chemistry", "English"],
+    "interests": ["Healthcare", "Research", "Public Service"],
+    "skills": ["Biology", "Communication", "Critical Thinking", "Teamwork"],
+    "work_styles": ["People-focused", "Structured", "Leadership"],
+    "future_scope": "Stable and respected career with opportunities in hospitals, research, public health, and specialization.",
+    "average_salary": "Varies widely by specialization, location, and experience.",
+    "roadmap": {
+      "Beginner": ["Biology fundamentals", "Chemistry fundamentals", "Physics for medical entrance", "Study discipline"],
+      "Intermediate": ["NEET preparation", "Mock tests", "Human physiology", "Medical ethics"],
+      "Advanced": ["MBBS", "Internship", "Specialization planning", "Clinical research exposure"]
+    },
+    "projects": ["Health awareness campaign", "First-aid education drive", "Biology concept notes"],
+    "resources": ["NCERT Biology", "NEET previous papers", "WHO health topics"]
+  },
+  {
+    "id": "business-analyst",
+    "title": "Business Analyst",
+    "category": "Business and Management",
+    "description": "Connects business goals with data, processes, and technology solutions.",
+    "preferred_streams": ["Commerce", "Computer Science", "Arts"],
+    "subjects": ["Business Studies", "Economics", "Statistics", "English"],
+    "interests": ["Business", "Data", "Problem Solving"],
+    "skills": ["Communication", "Data Analysis", "Critical Thinking", "Finance"],
+    "work_styles": ["Analytical", "People-focused", "Structured"],
+    "future_scope": "Useful in consulting, fintech, IT services, product companies, and operations teams.",
+    "average_salary": "₹5 LPA - ₹16 LPA in India, depending on domain and tools.",
+    "roadmap": {
+      "Beginner": ["Business fundamentals", "Excel", "Communication", "Basic statistics"],
+      "Intermediate": ["SQL", "Dashboarding", "Requirement analysis", "Process mapping"],
+      "Advanced": ["Product analytics", "Agile methods", "Stakeholder management", "Case studies"]
+    },
+    "projects": ["Sales dashboard", "Market research report", "Business process improvement proposal"],
+    "resources": ["Google Data Analytics", "Harvard Business Review", "SQLBolt"]
+  },
+  {
+    "id": "ux-designer",
+    "title": "UX Designer",
+    "category": "Design",
+    "description": "Designs easy, useful, and accessible digital experiences for real users.",
+    "preferred_streams": ["Arts", "Computer Science", "Vocational"],
+    "subjects": ["Design", "Psychology", "English", "Computer Science"],
+    "interests": ["Creativity", "Technology", "Research", "Problem Solving"],
+    "skills": ["Design Thinking", "Communication", "Writing", "Critical Thinking"],
+    "work_styles": ["Creative", "People-focused", "Structured"],
+    "future_scope": "Growing demand in apps, websites, SaaS products, e-commerce, and accessibility design.",
+    "average_salary": "₹4 LPA - ₹20 LPA in India, depending on portfolio strength.",
+    "roadmap": {
+      "Beginner": ["Design basics", "User research", "Wireframing", "Figma basics"],
+      "Intermediate": ["Information architecture", "Prototyping", "Usability testing", "Design systems"],
+      "Advanced": ["Accessibility", "Product strategy", "Portfolio case studies", "Design handoff"]
+    },
+    "projects": ["Redesign a college website", "Mobile app prototype", "Usability study report"],
+    "resources": ["Figma Learn", "Nielsen Norman Group", "Google UX Design Certificate"]
+  },
+  {
+    "id": "teacher",
+    "title": "Teacher / Educator",
+    "category": "Education",
+    "description": "Helps learners understand concepts, build confidence, and grow academically.",
+    "preferred_streams": ["Science", "Commerce", "Arts", "Computer Science"],
+    "subjects": ["English", "Psychology", "Mathematics", "Computer Science", "Biology"],
+    "interests": ["Teaching", "Public Service", "Research"],
+    "skills": ["Communication", "Writing", "Leadership", "Teamwork"],
+    "work_styles": ["People-focused", "Structured", "Creative"],
+    "future_scope": "Opportunities in schools, edtech, coaching, content creation, and higher education.",
+    "average_salary": "Varies by institution, subject, qualification, and city.",
+    "roadmap": {
+      "Beginner": ["Subject mastery", "Communication practice", "Lesson planning", "Presentation skills"],
+      "Intermediate": ["Teaching methods", "Assessment design", "Digital teaching tools", "Classroom management"],
+      "Advanced": ["B.Ed or relevant qualification", "Educational psychology", "Edtech content", "Mentoring"]
+    },
+    "projects": ["Teach a mini course", "Create study notes", "Record concept explainer videos"],
+    "resources": ["DIKSHA", "Khan Academy", "NCERT resources"]
+  },
+  {
+    "id": "cybersecurity-analyst",
+    "title": "Cybersecurity Analyst",
+    "category": "Technology and Security",
+    "description": "Protects systems, networks, and data from digital threats.",
+    "preferred_streams": ["Science", "Computer Science", "Vocational"],
+    "subjects": ["Computer Science", "Mathematics", "English"],
+    "interests": ["Security", "Technology", "Problem Solving", "Research"],
+    "skills": ["Python", "Critical Thinking", "Web Development", "Communication"],
+    "work_styles": ["Analytical", "Structured", "Independent"],
+    "future_scope": "High demand due to cloud growth, digital payments, enterprise security, and compliance needs.",
+    "average_salary": "₹5 LPA - ₹22 LPA in India, depending on certifications and experience.",
+    "roadmap": {
+      "Beginner": ["Networking basics", "Linux basics", "Web basics", "Security fundamentals"],
+      "Intermediate": ["OWASP Top 10", "Python scripting", "Log analysis", "Threat modeling"],
+      "Advanced": ["SIEM tools", "Cloud security", "Incident response", "Ethical hacking labs"]
+    },
+    "projects": ["Password strength checker", "Phishing awareness demo", "Basic vulnerability report"],
+    "resources": ["TryHackMe", "OWASP", "Cisco Networking Basics"]
+  },
+  {
+    "id": "civil-services",
+    "title": "Civil Services",
+    "category": "Public Service",
+    "description": "Works in administration, governance, and public policy to serve society.",
+    "preferred_streams": ["Arts", "Science", "Commerce"],
+    "subjects": ["English", "Economics", "Psychology", "History", "Political Science"],
+    "interests": ["Public Service", "Research", "Teaching", "Leadership"],
+    "skills": ["Communication", "Writing", "Leadership", "Critical Thinking"],
+    "work_styles": ["Leadership", "Structured", "People-focused"],
+    "future_scope": "Prestigious public sector path with roles in administration, policy, diplomacy, and development.",
+    "average_salary": "Government pay scale with allowances and career progression.",
+    "roadmap": {
+      "Beginner": ["Current affairs", "NCERT basics", "Reading habit", "Essay writing"],
+      "Intermediate": ["UPSC syllabus", "Optional subject selection", "Answer writing", "Mock tests"],
+      "Advanced": ["Interview preparation", "Policy analysis", "Revision strategy", "Public administration exposure"]
+    },
+    "projects": ["Local governance case study", "Public issue research report", "Current affairs notebook"],
+    "resources": ["NCERT textbooks", "PIB", "PRS India", "The Hindu editorials"]
+  }
+]

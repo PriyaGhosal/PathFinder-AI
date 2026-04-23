@@ -1,0 +1,22 @@
+{% extends "admin_base.html" %}
+
+{% block admin_content %}
+<div class="section-heading"><p class="eyebrow">{{ t("admin") }}</p><h1>{{ t("messages") }}</h1></div>
+<div class="message-stack">
+  {% for message in messages %}
+    <article class="info-panel">
+      <h2>{{ message.name }} · {{ message.email }}</h2>
+      <p>{{ message.message }}</p>
+      <form method="post" class="inline-form">
+        <input type="hidden" name="id" value="{{ message.id }}">
+        <select name="status">
+          <option value="open" {% if message.status == "open" %}selected{% endif %}>open</option>
+          <option value="answered" {% if message.status == "answered" %}selected{% endif %}>answered</option>
+          <option value="closed" {% if message.status == "closed" %}selected{% endif %}>closed</option>
+        </select>
+        <button class="button small" type="submit">{{ t("update") }}</button>
+      </form>
+    </article>
+  {% endfor %}
+</div>
+{% endblock %}

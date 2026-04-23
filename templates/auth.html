@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band auth-shell">
+  <form class="auth-card" method="post">
+    <p class="eyebrow">{{ t("account") }}</p>
+    <h1>{{ t("signup") if mode == "signup" else t("login") }}</h1>
+    {% if error %}<div class="notice error">{{ error }}</div>{% endif %}
+    {% if mode == "signup" %}
+      <label>
+        {{ t("name") }}
+        <input type="text" name="name" required>
+      </label>
+    {% endif %}
+    <label>
+      {{ t("email") }}
+      <input type="email" name="email" required>
+    </label>
+    <label>
+      {{ t("password") }}
+      <input type="password" name="password" required>
+    </label>
+    <button class="button primary full" type="submit">{{ t("signup") if mode == "signup" else t("login") }}</button>
+    {% if mode == "signup" %}
+      <p>{{ t("already_account") }} <a href="{{ url_for('login') }}">{{ t("login") }}</a></p>
+    {% else %}
+      <p>{{ t("new_account") }} <a href="{{ url_for('signup') }}">{{ t("signup") }}</a></p>
+    {% endif %}
+  </form>
+</section>
+{% endblock %}

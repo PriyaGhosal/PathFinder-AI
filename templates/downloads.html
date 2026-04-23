@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="section-heading">
+    <p class="eyebrow">{{ t("downloads") }}</p>
+    <h1>{{ t("download_center") }}</h1>
+  </div>
+  <div class="download-grid">
+    {% for item in items %}
+      <article class="download-card">
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.file_path }}</p>
+        <a class="button primary" href="{{ url_for('download_file', token=item.download_token) }}">{{ t("secure_download") }}</a>
+      </article>
+    {% else %}
+      <p class="empty-state">{{ t("no_downloads") }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

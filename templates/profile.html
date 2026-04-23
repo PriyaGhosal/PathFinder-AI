@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("profile") }}</p>
+      <h1>{{ user.name }}</h1>
+    </div>
+    <div class="page-actions">
+      <a class="button ghost" href="{{ url_for('orders') }}">{{ t("orders") }}</a>
+      <a class="button ghost" href="{{ url_for('downloads') }}">{{ t("downloads") }}</a>
+      <a class="button ghost" href="{{ url_for('logout') }}">{{ t("logout") }}</a>
+    </div>
+  </div>
+
+  <div class="store-layout">
+    <form class="assessment-form" method="post">
+      {% if notice %}<div class="notice">{{ notice }}</div>{% endif %}
+      {% if error %}<div class="notice error">{{ error }}</div>{% endif %}
+      <label>{{ t("name") }}<input type="text" name="name" value="{{ user.name }}" required></label>
+      <label>{{ t("email") }}<input type="email" value="{{ user.email }}" disabled></label>
+      <label>{{ t("new_password") }}<input type="password" name="password" placeholder="{{ t('optional_password') }}"></label>
+      <button class="button primary" type="submit">{{ t("save_changes") }}</button>
+    </form>
+    <section class="info-panel">
+      <h2>{{ t("recent_orders") }}</h2>
+      <ul>
+        {% for order in orders[:5] %}
+          <li><a href="{{ url_for('order_detail', order_id=order.id) }}">#{{ order.id }} · {{ money(order.total) }}</a></li>
+        {% else %}
+          <li>{{ t("no_orders") }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "admin_base.html" %}
+
+{% block admin_content %}
+<div class="section-heading"><p class="eyebrow">{{ t("admin") }}</p><h1>{{ t("faqs") }}</h1></div>
+<form class="admin-form" method="post">
+  {% if editing %}<input type="hidden" name="id" value="{{ editing.id }}">{% endif %}
+  <label>{{ t("question") }}<input name="question" value="{{ editing.question if editing else '' }}" required></label>
+  <label>{{ t("answer") }}<textarea name="answer" rows="3" required>{{ editing.answer if editing else '' }}</textarea></label>
+  <label class="inline-check"><input type="checkbox" name="active" {% if not editing or editing.active %}checked{% endif %}> {{ t("active") }}</label>
+  <button class="button primary" type="submit">{{ t("save_changes") }}</button>
+</form>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>{{ t("question") }}</th><th>{{ t("active") }}</th><th></th></tr></thead>
+    <tbody>
+      {% for faq in faqs %}
+        <tr><td>{{ faq.question }}</td><td>{{ faq.active }}</td><td><a class="button small" href="{{ url_for('admin_faqs', edit=faq.id) }}">{{ t("edit") }}</a></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

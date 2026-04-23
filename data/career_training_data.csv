@@ -1,0 +1,17 @@
+academic_stream,subjects,interests,skills,work_style,career_id
+Computer Science,"Computer Science,Mathematics","Technology,Problem Solving","Python,Web Development",Analytical,software-developer
+Science,"Mathematics,Computer Science","Technology,Creativity","Python,Communication",Creative,software-developer
+Computer Science,"Statistics,Computer Science","Data,Research","Python,Data Analysis",Analytical,data-scientist
+Commerce,"Economics,Statistics","Business,Data","Data Analysis,Finance",Structured,business-analyst
+Science,"Biology,Physics","Healthcare,Public Service","Biology,Communication",People-focused,doctor
+Science,"Biology,English","Healthcare,Research","Critical Thinking,Teamwork",Structured,doctor
+Arts,"Design,Psychology","Creativity,Research","Design Thinking,Communication",Creative,ux-designer
+Computer Science,"Design,Computer Science","Technology,Creativity","Design Thinking,Web Development",Creative,ux-designer
+Arts,"English,Psychology","Teaching,Public Service","Communication,Writing",People-focused,teacher
+Science,"Mathematics,English","Teaching,Research","Communication,Leadership",Structured,teacher
+Computer Science,"Computer Science,Mathematics","Security,Technology","Python,Critical Thinking",Analytical,cybersecurity-analyst
+Vocational,"Computer Science,English","Security,Problem Solving","Web Development,Communication",Independent,cybersecurity-analyst
+Arts,"English,Economics","Public Service,Leadership","Writing,Leadership",Leadership,civil-services
+Commerce,"Economics,English","Public Service,Research","Communication,Critical Thinking",Structured,civil-services
+Commerce,"Business Studies,Economics","Business,Problem Solving","Communication,Finance",People-focused,business-analyst
+Computer Science,"Mathematics,Statistics","Data,Technology","Python,Mathematics",Independent,data-scientist

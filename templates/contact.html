@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero contact-hero">
+  <p class="eyebrow">{{ t("contact_us") }}</p>
+  <h1>{{ t("contact_title") }}</h1>
+  <p>{{ t("contact_text") }}</p>
+</section>
+
+<section class="section contact-layout">
+  <div class="contact-card">
+    <h2>{{ t("contact_details") }}</h2>
+    <p><strong>{{ t("address") }}:</strong> EM-4/1 Sector V, Bidhannagar, Kolkata</p>
+    <p><strong>{{ t("email") }}:</strong> <a href="mailto:PathFinder-AI@gmail.com">PathFinder-AI@gmail.com</a></p>
+    <p><strong>{{ t("phone") }}:</strong> <a href="tel:+913333333333">+91 3333333333</a></p>
+  </div>
+
+  <form class="contact-form" action="{{ url_for('contact') }}" method="post">
+    {% if sent %}
+      <div class="notice">{{ t("contact_notice") }}</div>
+    {% endif %}
+    <label>
+      {{ t("name") }}
+      <input type="text" name="name" placeholder="Your name" required>
+    </label>
+    <label>
+      {{ t("email") }}
+      <input type="email" name="email" placeholder="you@example.com" required>
+    </label>
+    <label>
+      {{ t("message") }}
+      <textarea name="message" rows="5" placeholder="{{ t('message_placeholder') }}" required></textarea>
+    </label>
+    <button class="button primary" type="submit">{{ t("send_message") }}</button>
+  </form>
+</section>
+{% endblock %}

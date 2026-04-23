@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("cart") }}</p>
+      <h1>{{ t("shopping_cart") }}</h1>
+    </div>
+    <a class="button ghost" href="{{ url_for('products') }}">{{ t("continue_shopping") }}</a>
+  </div>
+  <div class="checkout-layout">
+    <div class="cart-list">
+      {% for item in items %}
+        <article class="cart-item">
+          <div>
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.category }} · {{ money(item.price) }}</p>
+          </div>
+          <form action="{{ url_for('update_cart', cart_id=item.cart_id) }}" method="post" class="quantity-form">
+            <input type="number" name="quantity" value="{{ item.quantity }}" min="0">
+            <button class="button small" type="submit">{{ t("update") }}</button>
+          </form>
+          <strong>{{ money(item.line_total) }}</strong>
+        </article>
+      {% else %}
+        <p class="empty-state">{{ t("empty_cart") }}</p>
+      {% endfor %}
+    </div>
+    <aside class="summary-card">
+      <h2>{{ t("order_summary") }}</h2>
+      <form action="{{ url_for('apply_coupon') }}" method="post" class="coupon-form">
+        <input type="text" name="coupon_code" placeholder="CAREER10" value="{{ session.get('coupon_code', '') }}">
+        <button class="button small" type="submit">{{ t("apply_coupon") }}</button>
+      </form>
+      {% if coupon_error %}<p class="form-error">{{ coupon_error }}</p>{% endif %}
+      <p><span>{{ t("subtotal") }}</span><strong>{{ money(subtotal) }}</strong></p>
+      <p><span>{{ t("discount") }}</span><strong>-{{ money(discount) }}</strong></p>
+      <p><span>{{ t("tax") }}</span><strong>{{ money(tax) }}</strong></p>
+      <p class="summary-total"><span>{{ t("total") }}</span><strong>{{ money(total) }}</strong></p>
+      <a class="button primary full" href="{{ url_for('checkout') }}">{{ t("checkout") }}</a>
+    </aside>
+  </div>
+</section>
+{% endblock %}

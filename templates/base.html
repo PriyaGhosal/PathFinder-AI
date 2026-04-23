@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="{{ language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ t("app_name") }}</title>
+  <script>
+    const savedTheme = localStorage.getItem("pathfinder-theme") || "light";
+    document.documentElement.dataset.theme = savedTheme;
+  </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    
+    <a class="brand" href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="PathFinder AI Logo" class="logo">
+    <span>
+      <strong>PathFinder-AI</strong>
+      <small>AI powered career counselling</small>
+    </span>
+  </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="{{ url_for('index') }}">{{ t("home") }}</a>
+      <a href="{{ url_for('products') }}">{{ t("products") }}</a>
+      <a href="{{ url_for('about') }}">{{ t("about_us") }}</a>
+      <a href="{{ url_for('contact') }}">{{ t("contact_us") }}</a>
+      <div class="nav-menu">
+        <button type="button">{{ t("more") }}</button>
+        <div class="nav-menu-panel">
+          <a href="{{ url_for('assessment') }}">{{ t("assessment") }}</a>
+          <a href="{{ url_for('careers') }}">{{ t("careers") }}</a>
+          <a href="{{ url_for('compare') }}">{{ t("compare") }}</a>
+          <a href="{{ url_for('dashboard') }}">{{ t("dashboard") }}</a>
+          <a href="{{ url_for('report') }}">{{ t("report") }}</a>
+          {% if user %}
+            <a href="{{ url_for('orders') }}">{{ t("orders") }}</a>
+            <a href="{{ url_for('downloads') }}">{{ t("downloads") }}</a>
+          {% endif %}
+          {% if user and user.role == "admin" %}
+            <a href="{{ url_for('admin') }}">{{ t("admin") }}</a>
+          {% endif %}
+        </div>
+      </div>
+      <a class="nav-chat" href="{{ url_for('assistant') }}">{{ t("ai_chat") }}</a>
+    </nav>
+    <a class="cart-link" href="{{ url_for('cart') }}" aria-label="{{ t('cart') }}">
+      <span>Cart</span>
+      <strong>{{ cart_count }}</strong>
+    </a>
+    {% if user %}
+      <a class="account-link" href="{{ url_for('profile') }}">{{ user.name }}</a>
+    {% else %}
+      <a class="account-link" href="{{ url_for('login') }}">{{ t("login") }}</a>
+    {% endif %}
+    
+    <button
+      class="theme-toggle"
+      type="button"
+      data-theme-toggle
+      data-light-label="{{ t('light_mode') }}"
+      data-dark-label="{{ t('dark_mode') }}"
+      aria-label="{{ t('theme') }}"
+      title="{{ t('theme') }}"
+    >
+      <svg class="theme-icon sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"></path>
+      </svg>
+      <svg class="theme-icon moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21 14.4A7.8 7.8 0 0 1 9.6 3 9 9 0 1 0 21 14.4z"></path>
+      </svg>
+      <span class="sr-only" data-theme-label>{{ t("dark_mode") }}</span>
+    </button>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="footer-brand" href="{{ url_for('index') }}">
+        <span class="brand-mark">PF</span>
+        <strong>{{ t("app_name") }}</strong>
+      </a>
+      <p>{{ t("footer_pitch") }}</p>
+    </div>
+    <address>
+      <strong>{{ t("contact_us") }}</strong>
+      <span>EM-4/1 Sector V, Bidhannagar, Kolkata</span>
+      <a href="mailto:PathFinder-AI@gmail.com">PathFinder-AI@gmail.com</a>
+      <a href="tel:+913333333333">+91 3333333333</a>
+    </address>
+    <div class="footer-bottom">&copy; PathFinder-AI 2026 All Rights Reserved</div>
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <a href="{{ url_for('index') }}"><span>H</span>{{ t("home") }}</a>
+    <a href="{{ url_for('products') }}"><span>P</span>{{ t("products") }}</a>
+    <a href="{{ url_for('cart') }}"><span>C</span>{{ t("cart") }}</a>
+    <a href="{{ url_for('profile' if user else 'login') }}"><span>U</span>{{ t("profile") }}</a>
+  </nav>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

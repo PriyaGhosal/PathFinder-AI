@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-hero">
+  <p class="eyebrow">{{ t("about_us") }}</p>
+  <h1>{{ t("how_help") }}</h1>
+  <p>{{ t("about_intro") }}</p>
+</section>
+
+<section class="section help-section">
+  <div class="feature-grid">
+    <article class="feature-card">
+      <span>01</span>
+      <h3>{{ t("personalized_assessments") }}</h3>
+      <p>{{ t("personalized_assessments_text") }}</p>
+    </article>
+    <article class="feature-card">
+      <span>02</span>
+      <h3>{{ t("comprehensive_analysis") }}</h3>
+      <p>{{ t("comprehensive_analysis_text") }}</p>
+    </article>
+    <article class="feature-card">
+      <span>03</span>
+      <h3>{{ t("customized_career_insights") }}</h3>
+      <p>{{ t("customized_career_insights_text") }}</p>
+    </article>
+    <article class="feature-card">
+      <span>04</span>
+      <h3>{{ t("ai_powered_guidance") }}</h3>
+      <p>{{ t("ai_powered_guidance_text") }}</p>
+    </article>
+    <article class="feature-card wide">
+      <span>05</span>
+      <h3>{{ t("industry_insights") }}</h3>
+      <p>{{ t("industry_insights_text") }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div>
+    <p class="eyebrow">{{ t("our_offerings") }}</p>
+    <h2>{{ t("cta_title") }}</h2>
+    <p>{{ t("cta_text") }}</p>
+  </div>
+  <a class="button primary" href="{{ url_for('assessment') }}">{{ t("get_started") }}</a>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band assistant-page">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("assistant") }}</p>
+      <h1>{{ t("career_assistant") }}</h1>
+    </div>
+    <a class="button ghost" href="{{ url_for('assessment') }}">{{ t("new_assessment") }}</a>
+  </div>
+
+  <div class="assistant-layout">
+    <aside class="assistant-context">
+      <h2>{{ t("current_profile") }}</h2>
+      {% if profile and recommendations %}
+        <p><strong>{{ profile.name }}</strong></p>
+        <p>{{ t("top_matches") }}: {{ recommendations[0].title }}</p>
+        <p>{{ t("confidence") }}: {{ recommendations[0].confidence }}%</p>
+      {% else %}
+        <p>{{ t("assistant_empty") }}</p>
+      {% endif %}
+    </aside>
+
+    <section class="chat-panel">
+      <div class="chat-history">
+        {% if history %}
+          {% for item in history %}
+            <div class="chat-message user">{{ item.question }}</div>
+            <div class="chat-message bot">{{ item.answer }}</div>
+          {% endfor %}
+        {% else %}
+          <div class="chat-message bot">{{ t("assistant_prompt") }}</div>
+        {% endif %}
+      </div>
+
+      <form class="chat-form" method="post">
+        <input type="text" name="question" placeholder="{{ t('assistant_placeholder') }}" required>
+        <button class="button primary" type="submit">{{ t("ask") }}</button>
+      </form>
+    </section>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("dashboard") }}</p>
+      <h1>{{ t("recent_assessments") }}</h1>
+    </div>
+    <a class="button primary" href="{{ url_for('assessment') }}">{{ t("new_assessment") }}</a>
+  </div>
+
+  <div class="stats-grid">
+    <article class="stat-card">
+      <span>{{ t("total_assessments") }}</span>
+      <strong>{{ metrics.total_assessments }}</strong>
+    </article>
+    <article class="stat-card">
+      <span>{{ t("average_confidence") }}</span>
+      <strong>{{ metrics.average_confidence }}%</strong>
+    </article>
+    <article class="stat-card">
+      <span>{{ t("unique_careers") }}</span>
+      <strong>{{ metrics.unique_top_careers }}</strong>
+    </article>
+  </div>
+
+  {% if metrics.top_careers %}
+    <section class="analytics-panel">
+      <h2>{{ t("popular_careers") }}</h2>
+      {% for career in metrics.top_careers %}
+        <div class="bar-row">
+          <span>{{ career.title }}</span>
+          <strong>{{ career.count }}</strong>
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  {% if assessments %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>{{ t("name") }}</th>
+            <th>{{ t("academic_stream") }}</th>
+            <th>{{ t("top_matches") }}</th>
+            <th>{{ t("confidence") }}</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in assessments %}
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.academic_stream }}</td>
+              <td>{{ item.top_career }}</td>
+              <td>
+                <span class="meter">
+                  <span style="width: {{ item.confidence }}%"></span>
+                </span>
+                {{ item.confidence }}%
+              </td>
+              <td>{{ item.created_at[:10] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="empty-state">{{ t("no_assessments") }}</p>
+  {% endif %}
+</section>
+{% endblock %}

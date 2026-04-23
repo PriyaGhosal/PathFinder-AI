@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="section-heading">
+    <p class="eyebrow">{{ t("assessment") }}</p>
+    <h1>{{ t("start_assessment") }}</h1>
+  </div>
+
+  <form class="assessment-form" action="{{ url_for('recommend') }}" method="post">
+    <div class="form-row two">
+      <label>
+        {{ t("name") }}
+        <input type="text" name="name" placeholder="Priya Sharma" required>
+      </label>
+      <label>
+        {{ t("language") }}
+        <select name="language">
+          {% for item in languages %}
+            <option value="{{ item.code }}" {% if item.code == language %}selected{% endif %}>{{ item.label }}</option>
+          {% endfor %}
+        </select>
+      </label>
+    </div>
+
+    <label>
+      {{ t("academic_stream") }}
+      <select name="academic_stream" required>
+        <option value="">Select stream</option>
+        {% for stream in options.academic_streams %}
+          <option value="{{ stream }}">{{ stream }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <fieldset>
+      <legend>{{ t("subjects") }}</legend>
+      <div class="option-grid">
+        {% for subject in options.subjects %}
+          <label class="check-tile">
+            <input type="checkbox" name="subjects" value="{{ subject }}">
+            <span>{{ subject }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>{{ t("interests") }}</legend>
+      <div class="option-grid">
+        {% for interest in options.interests %}
+          <label class="check-tile">
+            <input type="checkbox" name="interests" value="{{ interest }}">
+            <span>{{ interest }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>{{ t("skills") }}</legend>
+      <div class="option-grid">
+        {% for skill in options.skills %}
+          <label class="check-tile">
+            <input type="checkbox" name="skills" value="{{ skill }}">
+            <span>{{ skill }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <label>
+      {{ t("work_style") }}
+      <select name="work_style" required>
+        <option value="">Select work style</option>
+        {% for style in options.work_styles %}
+          <option value="{{ style }}">{{ style }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>
+      {{ t("goal") }}
+      <textarea name="goal" rows="4" placeholder="{{ t('goal_placeholder') }}"></textarea>
+    </label>
+
+    <button class="button primary full" type="submit">{{ t("submit") }}</button>
+  </form>
+</section>
+{% endblock %}

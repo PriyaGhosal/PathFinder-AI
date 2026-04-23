@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="product-detail">
+    <div class="product-showcase">
+      <div class="product-media large">{{ product.category[:2].upper() }}</div>
+      <div class="screenshot-list">
+        {% for shot in screenshots %}
+          <span>{{ shot }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="product-info">
+      <span class="category">{{ product.category }}</span>
+      <h1>{{ product.title }}</h1>
+      <p>{{ product.description }}</p>
+      <strong class="price">{{ money(product.price) }}</strong>
+      <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post">
+        <button class="button primary full" type="submit">{{ t("add_to_cart") }}</button>
+      </form>
+    </div>
+  </div>
+
+  <section class="section-heading related-heading">
+    <p class="eyebrow">{{ t("related_products") }}</p>
+    <h2>{{ t("you_may_like") }}</h2>
+  </section>
+  <div class="product-grid">
+    {% for item in related %}
+      <article class="product-card">
+        <div class="product-media">{{ item.category[:2].upper() }}</div>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+        <a class="button small" href="{{ url_for('product_detail', slug=item.slug) }}">{{ t("view_details") }}</a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

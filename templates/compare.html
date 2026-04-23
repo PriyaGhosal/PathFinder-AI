@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("compare") }}</p>
+      <h1>{{ t("career_comparison") }}</h1>
+    </div>
+    <a class="button primary" href="{{ url_for('assessment') }}">{{ t("new_assessment") }}</a>
+  </div>
+
+  <form class="compare-builder" method="get">
+    <div class="option-grid">
+      {% for career in careers %}
+        <label class="check-tile">
+          <input type="checkbox" name="career_ids" value="{{ career.id }}" {% if career.id in selected_ids %}checked{% endif %}>
+          <span>{{ career.title }}</span>
+        </label>
+      {% endfor %}
+    </div>
+    <button class="button primary full" type="submit">{{ t("compare") }}</button>
+  </form>
+
+  <div class="compare-grid">
+    {% for career in selected_careers %}
+      <article class="compare-card">
+        <span class="category">{{ career.category }}</span>
+        <h2>{{ career.title }}</h2>
+        <p>{{ career.description }}</p>
+
+        <h3>{{ t("matched_skills") }}</h3>
+        <div class="chips compact">
+          {% for skill in career.matched_skills %}
+            <span>{{ skill }}</span>
+          {% else %}
+            <span>No current match</span>
+          {% endfor %}
+        </div>
+
+        <h3>{{ t("skill_gap") }}</h3>
+        <div class="chips compact warn">
+          {% for skill in career.skill_gap[:5] %}
+            <span>{{ skill }}</span>
+          {% else %}
+            <span>No major gap</span>
+          {% endfor %}
+        </div>
+
+        <h3>{{ t("average_salary") }}</h3>
+        <p>{{ career.average_salary }}</p>
+        <a class="button small" href="{{ url_for('roadmap', career_id=career.id) }}">{{ t("view_roadmap") }}</a>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{
+  "academic_streams": [
+    "Science",
+    "Commerce",
+    "Arts",
+    "Computer Science",
+    "Vocational"
+  ],
+  "subjects": [
+    "Mathematics",
+    "Physics",
+    "Biology",
+    "Computer Science",
+    "Economics",
+    "Business Studies",
+    "Psychology",
+    "Design",
+    "English",
+    "Statistics"
+  ],
+  "interests": [
+    "Problem Solving",
+    "Technology",
+    "Research",
+    "Healthcare",
+    "Business",
+    "Creativity",
+    "Teaching",
+    "Public Service",
+    "Data",
+    "Security"
+  ],
+  "skills": [
+    "Python",
+    "Communication",
+    "Leadership",
+    "Data Analysis",
+    "Design Thinking",
+    "Critical Thinking",
+    "Mathematics",
+    "Writing",
+    "Teamwork",
+    "Web Development",
+    "Biology",
+    "Finance"
+  ],
+  "work_styles": [
+    "Analytical",
+    "Creative",
+    "People-focused",
+    "Independent",
+    "Structured",
+    "Leadership"
+  ]
+}

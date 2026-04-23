@@ -1,0 +1,22 @@
+{% extends "admin_base.html" %}
+
+{% block admin_content %}
+<div class="result-heading">
+  <div>
+    <p class="eyebrow">{{ t("admin") }}</p>
+    <h1>{{ t("admin_dashboard") }}</h1>
+  </div>
+</div>
+<div class="stats-grid">
+  <article class="stat-card"><span>{{ t("orders") }}</span><strong>{{ stats.orders }}</strong></article>
+  <article class="stat-card"><span>{{ t("users") }}</span><strong>{{ stats.users }}</strong></article>
+  <article class="stat-card"><span>{{ t("products") }}</span><strong>{{ stats.products }}</strong></article>
+  <article class="stat-card"><span>{{ t("revenue") }}</span><strong>{{ money(stats.revenue) }}</strong></article>
+</div>
+<section class="analytics-panel">
+  <h2>{{ t("top_selling_products") }}</h2>
+  {% for item in top_products %}
+    <div class="bar-row"><span>{{ item.title }}</span><strong>{{ item.sold }}</strong></div>
+  {% endfor %}
+</section>
+{% endblock %}

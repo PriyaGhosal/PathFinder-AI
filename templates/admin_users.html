@@ -1,0 +1,22 @@
+{% extends "admin_base.html" %}
+
+{% block admin_content %}
+<div class="section-heading"><p class="eyebrow">{{ t("admin") }}</p><h1>{{ t("users") }}</h1></div>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>{{ t("name") }}</th><th>{{ t("email") }}</th><th>{{ t("role") }}</th><th>{{ t("blocked") }}</th><th></th></tr></thead>
+    <tbody>
+      {% for item in users %}
+        <tr>
+          <td>{{ item.name }}</td><td>{{ item.email }}</td><td>{{ item.role }}</td><td>{{ item.blocked }}</td>
+          <td>
+            {% if item.role != "admin" %}
+              <form method="post" action="{{ url_for('admin_toggle_user', user_id=item.id) }}"><button class="button small" type="submit">{{ t("block_unblock") }}</button></form>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

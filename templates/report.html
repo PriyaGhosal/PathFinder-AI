@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("report") }}</p>
+      <h1>{{ t("career_report") }}</h1>
+    </div>
+    <div class="page-actions">
+      <a class="button primary" href="{{ url_for('download_report') }}">{{ t("download_report") }}</a>
+      <button class="button ghost" type="button" onclick="window.print()">{{ t("print_report") }}</button>
+    </div>
+  </div>
+
+  <article class="report-sheet">
+    <header>
+      <h2>{{ profile.name }}</h2>
+      <p>{{ t("academic_stream") }}: {{ profile.academic_stream }}</p>
+      <p>{{ t("goal") }}: {{ profile.goal or "Not provided" }}</p>
+    </header>
+
+    {% for rec in recommendations %}
+      <section class="report-section">
+        <div class="report-title">
+          <h3>{{ loop.index }}. {{ rec.title }}</h3>
+          <strong>{{ rec.confidence }}%</strong>
+        </div>
+        <p>{{ rec.description }}</p>
+        <h4>{{ t("why") }}</h4>
+        <ul>
+          {% for reason in rec.reasons %}
+            <li>{{ reason }}</li>
+          {% endfor %}
+        </ul>
+        <h4>{{ t("skill_gap") }}</h4>
+        <p>{{ rec.skill_gap | join(", ") if rec.skill_gap else "No major skill gap." }}</p>
+      </section>
+    {% endfor %}
+  </article>
+</section>
+{% endblock %}

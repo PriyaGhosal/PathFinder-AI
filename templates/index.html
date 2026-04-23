@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">{{ t("app_name") }}</p>
+    <h1>{{ t("hero_title") }}</h1>
+    <p>{{ t("hero_text") }}</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ url_for('assessment') }}">{{ t("get_started") }}</a>
+      <a class="button ghost" href="{{ url_for('about') }}">{{ t("about_us") }}</a>
+    </div>
+  </div>
+  <div class="hero-panel" aria-label="Career recommendation preview">
+    <div class="radar">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="preview-list">
+      <div><strong>92%</strong><span>Software Developer</span></div>
+      <div><strong>86%</strong><span>Data Scientist</span></div>
+      <div><strong>79%</strong><span>UX Designer</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section help-section">
+  <div class="section-heading">
+    <p class="eyebrow">{{ t("about_us") }}</p>
+    <h2>{{ t("how_help") }}</h2>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <span>01</span>
+      <h3>{{ t("personalized_assessments") }}</h3>
+      <p>{{ t("personalized_assessments_text") }}</p>
+    </article>
+    <article class="feature-card">
+      <span>02</span>
+      <h3>{{ t("comprehensive_analysis") }}</h3>
+      <p>{{ t("comprehensive_analysis_text") }}</p>
+    </article>
+    <article class="feature-card">
+      <span>03</span>
+      <h3>{{ t("customized_career_insights") }}</h3>
+      <p>{{ t("customized_career_insights_text") }}</p>
+    </article>
+    <article class="feature-card">
+      <span>04</span>
+      <h3>{{ t("ai_powered_guidance") }}</h3>
+      <p>{{ t("ai_powered_guidance_text") }}</p>
+    </article>
+    <article class="feature-card wide">
+      <span>05</span>
+      <h3>{{ t("industry_insights") }}</h3>
+      <p>{{ t("industry_insights_text") }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section offerings-band">
+  <div class="section-heading">
+    <p class="eyebrow">{{ t("our_offerings") }}</p>
+    <h2>{{ t("offering_intro") }}</h2>
+  </div>
+  <div class="offering-grid">
+    <article class="offering-card">
+      <div class="offering-icon">T</div>
+      <h3>{{ t("customized_tests") }}</h3>
+      <p>{{ t("customized_tests_text") }}</p>
+    </article>
+    <article class="offering-card">
+      <div class="offering-icon">G</div>
+      <h3>{{ t("personalized_guidance") }}</h3>
+      <p>{{ t("personalized_guidance_text") }}</p>
+    </article>
+    <article class="offering-card">
+      <div class="offering-icon">AI</div>
+      <h3>{{ t("ai_insights") }}</h3>
+      <p>{{ t("ai_insights_text") }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <p class="eyebrow">{{ t("explore_careers") }}</p>
+    <h2>{{ t("career_domains_title") }}</h2>
+  </div>
+  <div class="career-grid">
+    {% for career in careers %}
+      <article class="career-card">
+        <span>{{ career.category }}</span>
+        <h3>{{ career.title }}</h3>
+        <p>{{ career.description }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="cta-band">
+  <div>
+    <p class="eyebrow">{{ t("app_name") }}</p>
+    <h2>{{ t("cta_title") }}</h2>
+    <p>{{ t("cta_text") }}</p>
+  </div>
+  <a class="button primary" href="{{ url_for('assessment') }}">{{ t("get_started") }}</a>
+</section>
+{% endblock %}

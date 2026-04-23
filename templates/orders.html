@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-band">
+  <div class="result-heading">
+    <div>
+      <p class="eyebrow">{{ t("orders") }}</p>
+      <h1>{{ t("your_orders") }}</h1>
+    </div>
+    <a class="button ghost" href="{{ url_for('downloads') }}">{{ t("downloads") }}</a>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>ID</th><th>{{ t("total") }}</th><th>{{ t("status") }}</th><th>{{ t("transaction") }}</th><th></th></tr></thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <td>#{{ order.id }}</td>
+            <td>{{ money(order.total) }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.transaction_id }}</td>
+            <td><a class="button small" href="{{ url_for('order_detail', order_id=order.id) }}">{{ t("view_details") }}</a></td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5">{{ t("no_orders") }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
