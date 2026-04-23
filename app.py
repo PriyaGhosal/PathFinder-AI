@@ -40,7 +40,7 @@ def load_env_file() -> None:
 load_env_file()
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = os.getenv("SECRET_KEY", "change-this-secret-key-for-production")
 
 
@@ -1350,6 +1350,7 @@ def set_language():
 
 init_db()
 
+import os
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
